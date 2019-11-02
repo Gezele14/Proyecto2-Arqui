@@ -1,44 +1,48 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import React from "react";
+import { Platform } from "react-native";
+import { createStackNavigator } from "react-navigation";
 
-import TabBarIcon from '../components/TabBarIcon';
-import Main from '../screens/Main';
+import TabBarIcon from "../components/TabBarIcon";
+import Chart from "../screens/Chart";
+import Main from "../screens/Main"
+import Home from "../screens/Home";
 
 const config = Platform.select({
-  web: { headerMode: 'screen' },
-  default: {},
+  web: { headerMode: "screen" },
+  default: {}
 });
 
 const HomeStack = createStackNavigator(
   {
-    Inicio: Main,
+    Home: Home,
+    Chart: Chart,
+    Main: Main
+  },
+  {
+    defaultNavigationOptions: {
+      backgroundColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "normal"
+      }
+    }
   },
   config
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Inicio',
+  tabBarLabel: "Home",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
-        Platform.OS === 'ios'
-          ? `ios-home${focused ? '' : '-outline'}`
-          : 'md-home'
+        Platform.OS === "ios"
+          ? `ios-home${focused ? "" : "-outline"}`
+          : "md-home"
       }
     />
-  ),
+  )
 };
 
-HomeStack.path = '';
-
+HomeStack.path = "";
 
 export default HomeStack;
-
-
-docker run -d -u root --rm --name jenkins \
-    -p 3000:3000 -p 50000:50000 \
-    --entrypoint bash \
-    jenkins:2.46.2-alpine \
-    -c "tail -F /jenkins.log"

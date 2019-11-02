@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Item Color Choser",
-    "slug": "com.ICC",
+    "slug": "com-ICC",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
