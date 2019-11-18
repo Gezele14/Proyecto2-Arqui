@@ -22,20 +22,15 @@ const chartConfig = {
   barPercentage: 1.5
 };
 
-const data = {
-  labels: ["Azul", "Rojo", "Verde"],
-  datasets: [
-    {
-      data: [30, 45, 28]
-    }
-  ]
-};
-
 export default class Chart extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      azul: 2,
+      rojo: 3,
+      verde: 35 
+    };
   }
 
   render() {
@@ -51,7 +46,14 @@ export default class Chart extends React.Component {
             </View>
             <BarChart
               style={styles.graphStyle}
-              data={data}
+              data={{
+                labels: ["Azul", "Rojo", "Verde"],
+                datasets: [
+                  {
+                    data: [this.state.azul, this.state.rojo, this.state.verde]
+                  }
+                ]
+              }}
               width={screenWidth}
               height={220}
               withInnerLines={true}

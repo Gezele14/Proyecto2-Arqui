@@ -1,54 +1,79 @@
 import React from "react";
-import { StyleSheet, View, FlatList, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  Text,
+  ImageBackground
+} from "react-native";
 
 import ListItem from "../ListItem";
 import Colors from "../constants/Colors";
+import bgimage from "../assets/images/background.png";
 
 export default class Home extends React.Component {
   state = {};
 
   static navigationOptions = {
-    title: "Selector de color",
-    headerStyle: {
-      backgroundColor: Colors.headerColor,
-      textAlign: "center"
-    }
+    header: null
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style = {{marginTop:25}}>
-          <Text style={styles.text}> Welcome </Text>
+      <ImageBackground source={bgimage} style={styles.backgroundContainer}>
+        <View style={styles.container}>
+          <View style={styles.textContainer}>
+            <Text style={styles.text}> Selector de objetos por color </Text>
+          </View>
+          <View style = {styles.FlatListContainer}>
+            <FlatList
+              numColumns={2}
+              data={[require("../assets/images/start.png")]}
+              renderItem={({ item }) => {
+                return (
+                  <ListItem image={item} navigation={this.props.navigation} />
+                );
+              }}
+              keyExtractor={(index) => {
+                return index;
+              }}
+            />
+          </View>
         </View>
-        <FlatList
-          numColumns={2}
-          data={[require("../assets/images/start.png")]}
-          renderItem={({ item }) => {
-            return <ListItem image={item} navigation={this.props.navigation} />;
-          }}
-          keyExtractor={(index) => {
-            return index;
-          }}
-        />
-      </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 50,
     flexDirection: "column",
+    alignItems: "center"
+  },
+  backgroundContainer: {
+    flex: 1,
+    width: null,
+    height: null,
     justifyContent: "center",
-    alignContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff"
+    backgroundColor: "#F5FCFF"
   },
   text: {
-    fontSize: 25,
-    backgroundColor: Colors.itemColor,
-    borderRadius: 15,
+    fontSize: 30,
+    color: "#FFFFFF",
+    justifyContent: "center",
     padding: 8
+  },
+  textContainer: {
+    marginTop: 150,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.itemColor,
+    borderRadius: 15
+  },
+  FlatListContainer: {
+    marginTop: 50
   }
+
 });

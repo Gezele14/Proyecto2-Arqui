@@ -4,7 +4,7 @@ import { createStackNavigator } from "react-navigation";
 
 import TabBarIcon from "../components/TabBarIcon";
 import Chart from "../screens/Chart";
-import Main from "../screens/Main"
+import Main from "../screens/Main";
 import Home from "../screens/Home";
 
 const config = Platform.select({
@@ -15,7 +15,6 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: Home,
-    Chart: Chart,
     Main: Main
   },
   {

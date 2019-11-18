@@ -4,9 +4,9 @@ import { View, Text, Image, StyleSheet,Dimensions } from "react-native";
 const Container = (props) => (
   <View style={styles.container}>
     <Image style={styles.imageStyle} source={{ uri: props.imageSrc }} />
-    <View>
+    <View style = {styles.textContainer}>
       <Text style = {styles.textStyle}>{props.name}</Text>
-      <Text style = {styles.textStyle}>{"Estado: " + props.value}</Text>
+      <Text style = {styles.textStyle}>{props.value}</Text>
     </View>
   </View>
 );
@@ -20,6 +20,11 @@ let styles = StyleSheet.create({
     marginTop: -2,
     flexDirection: "row"
   },
+  textContainer:{
+    marginLeft: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   column: {
     flex: 1,
     flexDirection: 'column',
@@ -31,6 +36,7 @@ let styles = StyleSheet.create({
   },
   textStyle: {
     justifyContent: "center",
+    color: "#ffffff",
     fontSize: 20
   },
   imageStyle: {
