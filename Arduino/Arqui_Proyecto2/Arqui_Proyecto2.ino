@@ -174,8 +174,11 @@ void loop()
     digitalWrite(PIN1_ESP, HIGH), digitalWrite(PIN2_ESP, HIGH), digitalWrite(VAL_ESP, HIGH);
     delay(1000);
     digitalWrite(VAL_ESP, LOW);
-    finish = false;
-    restantes = 0;
+    if(!VALOR){
+      finish = false;
+      restantes = 0;
+    }
+    
   }
   
   delay(100);
