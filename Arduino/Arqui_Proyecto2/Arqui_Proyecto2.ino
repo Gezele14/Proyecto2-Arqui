@@ -160,7 +160,9 @@ void loop()
     servoArriba.write(servoFinal);
     lec_infr = false;
     delay(1000);
-  }else if (VALOR && restantes > 0)
+  }
+  
+  if (VALOR && restantes > 0)
   {
     lec_infr = false;
     restantes = restantes - 1;
