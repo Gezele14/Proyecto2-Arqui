@@ -134,7 +134,7 @@ void loop()
       digitalWrite(VAL_ESP, LOW);
     }
 
-    if (fg > fr & fg > fb)
+    if ((fg > fr & fg > fb) || (fg == fr))
     {
       Serial.print("Verde");
       Serial.println();
