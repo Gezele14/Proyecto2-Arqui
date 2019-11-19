@@ -92,9 +92,8 @@ void loop()
   //Manejo de infrarrojo
   VALOR = estado.lectura(VALOR);
 
-  if ((!VALOR && !lec_infr) || restantes > 0)
+  if (!VALOR || restantes > 0)
   {
-    lec_infr = true;
     //Aqui se pone lo que quiere que haga
     Serial.println("obstaculo");
     //Setear posicion inicial
@@ -162,10 +161,10 @@ void loop()
     lec_infr = false;
     delay(1000);
   }
-  if (VALOR && lec_infr)
+  if (VALOR)
   {
     lec_infr = false;
-    restantes -= 1;
+    restantes = restantes - 1;
   }
   if (restantes == 0)
   {
@@ -173,6 +172,7 @@ void loop()
     digitalWrite(PIN1_ESP, HIGH), digitalWrite(PIN2_ESP, HIGH), digitalWrite(VAL_ESP, HIGH);
     delay(1000);
     digitalWrite(VAL_ESP, LOW);
+    restantes = -1;
   }
   
   delay(100);
