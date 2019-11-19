@@ -52,7 +52,7 @@ int PIN1_ESP = 4;
 int PIN2_ESP = 3;
 int VAL_ESP = 2;
 
-int restantes = 0;
+int restantes = 5;
 
 Servo servoArriba, servoAbajo;
 
@@ -159,6 +159,7 @@ void loop()
     //RGB SENSOR--------------------------------------------------------------------------------------------------------------------
 
     servoArriba.write(servoFinal);
+    restantes = 0;
     if(VALOR){
       finish = true;
     }
@@ -178,6 +179,7 @@ void loop()
       finish = false;
       restantes = 0;
     }
+    
     
   }
   
