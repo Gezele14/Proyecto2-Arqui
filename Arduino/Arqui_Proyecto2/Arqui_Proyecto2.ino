@@ -162,16 +162,19 @@ void loop()
     lec_infr = false;
     delay(1000);
   }
-  else if (VALOR && lec_infr)
+  if (VALOR && lec_infr)
   {
     lec_infr = false;
-    //Aqui se pone lo que quiere que haga
+    restantes -= 1;
+  }
+  if (restantes == 0)
+  {
     Serial.println("libre");
     digitalWrite(PIN1_ESP, HIGH), digitalWrite(PIN2_ESP, HIGH), digitalWrite(VAL_ESP, HIGH);
     delay(1000);
     digitalWrite(VAL_ESP, LOW);
-    restantes -= 1;
   }
+  
   delay(100);
 }
 
