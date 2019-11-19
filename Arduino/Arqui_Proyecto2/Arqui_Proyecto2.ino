@@ -92,7 +92,7 @@ void loop()
   //Manejo de infrarrojo
   VALOR = estado.lectura(VALOR);
 
-  if (!VALOR || restantes > 0)
+  if (!VALOR && restantes > 0)
   {
     //Aqui se pone lo que quiere que haga
     Serial.println("obstaculo");
@@ -161,7 +161,7 @@ void loop()
     lec_infr = false;
     delay(1000);
   }
-  if (VALOR)
+  if (VALOR && restantes > 0)
   {
     lec_infr = false;
     restantes = restantes - 1;
