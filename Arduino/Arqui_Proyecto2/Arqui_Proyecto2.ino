@@ -175,10 +175,10 @@ void loop()
     digitalWrite(PIN1_ESP, HIGH), digitalWrite(PIN2_ESP, HIGH), digitalWrite(VAL_ESP, HIGH);
     delay(1000);
     digitalWrite(VAL_ESP, LOW);
-    if(!VALOR){
-      finish = false;
-      restantes = 0;
-    }
+    finish = false;
+    restantes = 5;
+    inicio = false;
+    
   } else if (!inicio && !VALOR ){
     restantes = 0;
     inicio = true;
