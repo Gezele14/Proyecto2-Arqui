@@ -37,6 +37,7 @@ double fr, fg, fb;
 infrarrojo estado(7);
 int VALOR; // Variable que recibe el dato
 bool lec_infr = false;
+bool finish = false;
 
 //Defining pin-out for RGB sensor
 int S0 = 10;     //color gris
@@ -51,7 +52,7 @@ int PIN1_ESP = 4;
 int PIN2_ESP = 3;
 int VAL_ESP = 2;
 
-int restantes = 2;
+int restantes = 0;
 
 Servo servoArriba, servoAbajo;
 
@@ -92,7 +93,7 @@ void loop()
   //Manejo de infrarrojo
   VALOR = estado.lectura(VALOR);
 
-  if (!VALOR || restantes > 0)
+  if (!VALOR || restantes < 2)
   {
     //Aqui se pone lo que quiere que haga
     Serial.println("obstaculo");
@@ -158,22 +159,23 @@ void loop()
     //RGB SENSOR--------------------------------------------------------------------------------------------------------------------
 
     servoArriba.write(servoFinal);
-    lec_infr = false;
+    if(VALOR){
+      finish = true;
+    }
     delay(1000);
   }
   
-  if (VALOR && restantes > 0)
+  if (finish && restantes < 2)
   {
-    lec_infr = false;
-    restantes = restantes - 1;
-  }
-  if (restantes == 0)
+    restantes = restantes + 1;
+  } else if (restantes == 2)
   {
     Serial.println("libre");
     digitalWrite(PIN1_ESP, HIGH), digitalWrite(PIN2_ESP, HIGH), digitalWrite(VAL_ESP, HIGH);
     delay(1000);
     digitalWrite(VAL_ESP, LOW);
-    restantes = -1;
+    finish = false;
+    restantes = 0;
   }
   
   delay(100);
