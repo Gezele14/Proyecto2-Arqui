@@ -38,7 +38,7 @@ infrarrojo estado(7);
 int VALOR; // Variable que recibe el dato
 bool lec_infr = false;
 bool finish = false;
-bool init = false;
+bool inicio = false;
 
 //Defining pin-out for RGB sensor
 int S0 = 10;     //color gris
@@ -94,7 +94,7 @@ void loop()
   //Manejo de infrarrojo
   VALOR = estado.lectura(VALOR);
 
-  if ((!VALOR || restantes < 2) && init)
+  if ((!VALOR || restantes < 2) && inicio)
   {
     //Aqui se pone lo que quiere que haga
     Serial.println("obstaculo");
@@ -179,9 +179,9 @@ void loop()
       finish = false;
       restantes = 0;
     }
-  } else if (!init && !VALOR ){
+  } else if (!inicio && !VALOR ){
     restantes = 0;
-    init = true;
+    inicio = true;
   }
   
   delay(100);
